@@ -1,0 +1,7 @@
+google-genai 
+vnstock
+pandas
+fastapi
+uvicorn
+requests
+python-dotenv
