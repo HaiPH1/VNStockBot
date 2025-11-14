@@ -1,9 +1,10 @@
 from vnstock import Quote
 from vnstock import Company
 from datetime import datetime, timedelta
-
+from typing import List, Optional
 from dateutil.relativedelta import relativedelta
 from calendar import monthrange
+import json
 
 quote = Quote(symbol='VCI', source='VCI')
 company = Company(symbol='VCB', source='TCBS')
@@ -25,7 +26,7 @@ def get_subsidiaries(ticker):
 
 
 
-def get_historical_price(ticker, start_date=None, end_date=None,time_range=None, month=None, resolution="1d"):
+def get_historical_price(ticker, start_date=None, end_date=None, time_range=None, month=None, resolution="1d", sma_window=None, rsi_window=None):
     
     if isinstance(ticker, str):
         tickers = [ticker]
@@ -51,9 +52,11 @@ def get_historical_price(ticker, start_date=None, end_date=None,time_range=None,
     # Tính start/end nếu month
     elif month:
         year = today.year
+        if month > datetime.now().month:
+            year -= 1
         start_date = datetime(year, month, 1)
         last_day = monthrange(year, month)[1]
-        end_date = datetime(year, month, last_day)
+        end_date = today
 
     # Nếu start_date/end_date là string
     elif start_date and end_date:
@@ -71,7 +74,19 @@ def get_historical_price(ticker, start_date=None, end_date=None,time_range=None,
         df = quote.history(start=start_str, end=end_str)
 
         
-        result[sym] = df
+        if not df.empty:
+            if sma_window:
+                for window in sma_window:
+                    df[f'SMA_{window}'] = df['close'].rolling(window=window).mean().round(2)
+            
+            if rsi_window:
+                delta = df['close'].diff()
+                gain = (delta.where(delta > 0, 0)).rolling(window=rsi_window).mean()
+                loss = (-delta.where(delta < 0, 0)).rolling(window=rsi_window).mean()
+                rs = gain / loss
+                df[f'RSI_{rsi_window}'] = (100 - (100 / (1 + rs))).round(2)
+        
+        result[sym] = df.to_dict(orient='records')
 
     return result
 

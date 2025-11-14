@@ -72,6 +72,14 @@ tool_call = [
                             "type": "string",
                             "enum": ["1d", "1w", "1m"],
                             "description": "Độ phân giải dữ liệu: theo ngày (1d), tuần (1w), hoặc tháng (1m)."
+                        },
+                        "sma_window": {
+                            "type": "array",
+                            "items": {"type": "integer"},
+                            "description": "Danh sách các cửa sổ để tính SMA, ví dụ [20, 50]"
+                        },
+                        "rsi_window": {
+                            "type": "integer", "description": "Cửa sổ để tính RSI, ví dụ 14"
                         }
                     },
                     "required": ["ticker"]

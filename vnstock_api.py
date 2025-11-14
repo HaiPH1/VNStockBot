@@ -1,15 +1,21 @@
-from fastapi import FastAPI
+import os
+import json
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Union
+from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from tools import tool_call
 from prompt import SYSTEM_PROMPT
+from tools import tool_call
 from vnstock_functions import get_shareholders, get_officers, get_subsidiaries, get_historical_price
 
+load_dotenv()
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    raise ValueError("API key của Google chưa được thiết lập. Vui lòng tạo file .env")
 
-client = genai.Client(api_key="llllllllll")
-
+client = genai.Client(api_key=GOOGLE_API_KEY)
 app = FastAPI(title="VNStock Agent API", version="1.0")
 
 

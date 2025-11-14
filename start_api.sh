@@ -1,0 +1,1 @@
+uvicorn vnstock_api:app --reload

@@ -1,0 +1,89 @@
+{
+    "Acurancy": "85.71%",
+    "test_results": [
+        {
+            "case": 1,
+            "question": "Lấy dữ liệu OHLCV 10 ngày gần nhất HPG?",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế đã cung cấp đầy đủ thông tin OHLCV cho 10 ngày giao dịch gần nhất của mã cổ phiếu HPG như yêu cầu của người dùng, mặc dù định dạng trình bày khác với câu trả lời kỳ vọng."
+        },
+        {
+            "case": 2,
+            "question": "Lấy giá đóng của của mã VCB từ đầu tháng 11 theo khung 1d?",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế cung cấp đúng loại thông tin (giá đóng cửa) cho mã cổ phiếu (VCB) trong khung thời gian yêu cầu (từ đầu tháng 11, khung 1 ngày) với cấu trúc rõ ràng. Các con số khác biệt so với câu trả lời kỳ vọng không phải là lý do để đánh FAIL."
+        },
+        {
+            "case": 3,
+            "question": "Trong các mã BID, TCB và VCB mã nào có giá mở cửa thấp nhất trong 10 ngày qua",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế đã xác định đúng loại thông tin là giá mở cửa thấp nhất trong 10 ngày cho từng mã cổ phiếu được hỏi và đưa ra kết luận mã nào có giá thấp nhất, đáp ứng đầy đủ yêu cầu của câu hỏi."
+        },
+        {
+            "case": 4,
+            "question": "Tổng khối lượng giao dịch (volume) của mã VIC trong vòng 1 tuần gần đây",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế đã cung cấp đúng loại thông tin (tổng khối lượng giao dịch) cho mã VIC trong vòng 1 tuần gần đây theo yêu cầu của người dùng, bao gồm cả quá trình tính toán chi tiết."
+        },
+        {
+            "case": 5,
+            "question": "So sánh khối lượng giao dịch của VIC với HPG trong 2 tuần gần đây",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời của Agent cung cấp đầy đủ dữ liệu khối lượng giao dịch của cả VIC và HPG trong 2 tuần gần đây, đồng thời thực hiện việc so sánh một cách chi tiết và rõ ràng, đúng với yêu cầu của người dùng."
+        },
+        {
+            "case": 6,
+            "question": "Danh sách cổ đông lớn của VCB",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế đã cung cấp danh sách các cổ đông lớn của VCB cùng với tỷ lệ sở hữu, đáp ứng đúng yêu cầu của câu hỏi. Cấu trúc trình bày dạng văn bản vẫn được chấp nhận dù khác với ví dụ."
+        },
+        {
+            "case": 7,
+            "question": "Danh sách ban lãnh đạo đang làm việc của VCB",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế cung cấp danh sách ban lãnh đạo đang làm việc của VCB, đáp ứng đúng loại thông tin mà người dùng yêu cầu. Mặc dù cấu trúc khác với câu trả lời kỳ vọng, nhưng đây vẫn là một cách trình bày hợp lệ cho danh sách ban lãnh đạo."
+        },
+        {
+            "case": 8,
+            "question": "Các công ty con thuộc VCB",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế đã cung cấp danh sách các công ty con của VCB, chia thành hai nhóm rõ ràng dựa trên tỷ lệ sở hữu, và phân biệt với các công ty liên kết/khoản đầu tư. Điều này hoàn toàn phù hợp với yêu cầu của câu hỏi."
+        },
+        {
+            "case": 9,
+            "question": "Lấy cho tôi toàn bộ tên các lãnh đạo đang làm việc của VCB",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời thực tế đã cung cấp danh sách đầy đủ tên các lãnh đạo đang làm việc của VCB, đáp ứng đúng yêu cầu của câu hỏi. Việc các tên khác với câu trả lời kỳ vọng là do dữ liệu thay đổi theo thời gian và không phải là lỗi."
+        },
+        {
+            "case": 10,
+            "question": "Tính cho tôi SMA9 của mã VIC trong 2 tuần với timeframe 1d",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời của Agent đã cung cấp chính xác chỉ báo SMA9 cho mã VIC trong khung thời gian và giai đoạn yêu cầu, với cấu trúc bảng rõ ràng và giải thích hợp lý. Việc thiếu các cột như giá mở cửa, cao, thấp, khối lượng so với ví dụ không làm sai lệch mục đích chính của câu hỏi."
+        },
+        {
+            "case": 11,
+            "question": "Tính cho tôi SMA9 và SMA20 của mã VIC trong 2 tháng với timeframe 1d",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời của Agent đã tính toán và trả về đúng loại thông tin (SMA9, SMA20) cho mã cổ phiếu VIC trong khung thời gian và khoảng thời gian yêu cầu, được trình bày dưới dạng cấu trúc dữ liệu JSON hợp lệ."
+        },
+        {
+            "case": 12,
+            "question": "Tính cho tôi RSI14 của TCB trong 1 tuần với timeframe 1m",
+            "result": "FAIL",
+            "justification": "FAIL. Agent không thể cung cấp dữ liệu RSI14 theo khung thời gian '1m' như người dùng yêu cầu, mà thay vào đó đưa ra lựa chọn khác."
+        },
+        {
+            "case": 13,
+            "question": "Tính SMA9 và SMA20 của mã TCB từ đầu tháng 11 đến nay",
+            "result": "FAIL",
+            "justification": "FAIL. Câu trả lời thực tế là một thông báo lỗi API, không cung cấp bất kỳ dữ liệu SMA nào cho mã TCB như yêu cầu của người dùng. Agent không trả lời được câu hỏi."
+        },
+        {
+            "case": 15,
+            "question": "*Lưu ý: do dữ liệu mã chứng khoán thay đổi theo thời gian, dẫn đến kết quả tính toán có thể khác nhau tùy thời điểm. \nVậy nên kết quả (về mặt số liệu) không nhất thiết phải chính xác 100% như expected_answer\n=> Ứng viên vần gửi kèm code test",
+            "result": "PASS",
+            "justification": "PASS. Câu trả lời của Agent đã ghi nhận lưu ý của người dùng một cách phù hợp và sau đó chủ động hỏi lại liệu người dùng có cần hỗ trợ gì không, điều này cho thấy Agent đã xử lý đúng loại yêu cầu không phải là câu hỏi tài chính trực tiếp."
+        }
+    ]
+}

@@ -1,7 +1,11 @@
-google-genai 
+google-genai
 vnstock
 pandas
+numpy
 fastapi
 uvicorn
 requests
 python-dotenv
+openpyxl
+python-dotenv
+python-dateutil
